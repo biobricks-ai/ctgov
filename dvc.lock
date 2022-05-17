@@ -1,0 +1,30 @@
+schema: '2.0'
+stages:
+  download:
+    cmd: Rscript R/download.R
+    deps:
+    - path: R/download.R
+      md5: e648a5797ad91bcc6fa3a6672ed09cf2
+      size: 510
+    - path: https://aact.ctti-clinicaltrials.org/pipe_files
+      checksum: W/"3e584293a8f6078c121f5c354abb55a8"
+    outs:
+    - path: download/
+      md5: b32dc033057f165fd1450656a56ec504.dir
+      size: 1442754318
+      nfiles: 1
+  build:
+    cmd: Rscript R/build.R
+    deps:
+    - path: R/build.R
+      md5: bf3d05213161a3b1690f5097ce151944
+      size: 660
+    - path: download/
+      md5: 77ec345e9b907638fa09da43b008a737.dir
+      size: 1433829170
+      nfiles: 1
+    outs:
+    - path: data/
+      md5: dc8143f59c780709fd592dbf3da55e74.dir
+      size: 2438574312
+      nfiles: 49
