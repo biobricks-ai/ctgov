@@ -6,7 +6,8 @@ dependencies:
   - name: ctgov
     url: https://aact.ctti-clinicaltrials.org/pipe_files
 ---
-<a href="https://github.com/biobricks-ai/ctgov/actions"><img src="https://github.com/ctgov/actions/workflows/bricktools-check.yaml/badge.svg?branch=main"/></a>
+
+<a href="https://github.com/biobricks-ai/ctgov/actions"><img src="https://github.com/biobricks-ai/ctgov/actions/workflows/bricktools-check.yaml/badge.svg?branch=master"/></a>
 
 ## Description
  - This directory contains data obtained from ClinicalTrials.gov. 
