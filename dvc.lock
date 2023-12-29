@@ -17,14 +17,16 @@ stages:
     cmd: Rscript R/build.R
     deps:
     - path: R/build.R
-      md5: e01b4cae15d49d34f4ddfc9fe137ff9e
-      size: 516
+      hash: md5
+      md5: 838d95032e611a7168262b12616d9d0f
+      size: 517
     - path: download/
       md5: 12cebb0f1257b55cb3383a69be8f4704.dir
       size: 1439032169
       nfiles: 1
     outs:
-    - path: data/
-      md5: 0b824668efe763642bdba81092ac9e5f.dir
-      size: 2444011915
+    - path: brick/
+      hash: md5
+      md5: 92898df03f926bc52ff492c40ff92f31.dir
+      size: 2443746367
       nfiles: 49

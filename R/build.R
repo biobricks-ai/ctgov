@@ -4,7 +4,7 @@ library(fs)
 
 # creates temp directory and data directory
 tmp  <- fs::dir_create("tmp")
-data <- fs::dir_create("data")
+data <- fs::dir_create("brick")
 
 # unzips zipfile
 fs::dir_ls("download") |> tail(1) |> unzip(exdir = tmp)

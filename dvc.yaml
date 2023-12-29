@@ -3,7 +3,6 @@ stages:
     cmd: Rscript R/download.R
     deps:
     - R/download.R
-    - https://aact.ctti-clinicaltrials.org/pipe_files
     outs:
     - download/
   build:
@@ -12,4 +11,4 @@ stages:
     - R/build.R
     - download/
     outs:
-    - data/
+    - brick/
