@@ -3,6 +3,9 @@ import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
+from typing import Tuple
 
 
 URL = "https://aact.ctti-clinicaltrials.org/data_dictionary"
@@ -63,29 +66,30 @@ def setup_webdriver(url):
     return browser
 
 
-def find_data_table(webdriver):
+def find_data_table(webdriver: WebDriver) -> Tuple[WebElement]:
     table = webdriver.find_element(By.CLASS_NAME, "jsgrid-table")
     flt = table.find_element(By.CLASS_NAME, "jsgrid-filter-row")
     return (table, flt)
 
 
-def get_input(filter_row):
+def get_input(filter_row: WebElement):
     search_bar = filter_row.find_element(By.CSS_SELECTOR, ":nth-child(4)")
     input = search_bar.find_element(By.CSS_SELECTOR, ":nth-child(1)")
     return input
 
 
-def run_search(input, search_term):
+def run_search(input: WebElement, search_term):
+    _ = input.location_once_scrolled_into_view  # scrolls the table into view
     input.send_keys(search_term)
     input.send_keys(Keys.RETURN)
 
 
-def get_each_table(input, name):
+def get_each_table(input: WebElement, name):
     input.clear()
     run_search(input, name)
     # need to grab reference to jsgrid-table element
     table_ref = globals()['browser']
-    outer_html = table_ref.find_element(By.CLASS_NAME, "jsgrid-table").get_attribute("outerHTML")
+    outer_html = table_ref.find_element(By.CLASS_NAME, "jsgrid-grid-body").get_attribute("outerHTML")
     soup = BeautifulSoup(outer_html)
     return soup
     
