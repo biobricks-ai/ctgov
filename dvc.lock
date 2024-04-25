@@ -5,7 +5,7 @@ stages:
     deps:
     - path: https://aact.ctti-clinicaltrials.org/pipe_files
       hash: md5
-      checksum: '270187926789710790283625292984097059272'
+      checksum: '286645490874361551640663643212643142456'
     - path: stages/download.R
       hash: md5
       md5: 25796c42a85949526905b1c02c917ab7
@@ -13,16 +13,16 @@ stages:
     outs:
     - path: download/
       hash: md5
-      md5: 3be97a6b93b71c58a0f0a4195162ee9b.dir
-      size: 1805514254
+      md5: bad1c22433a725845421f7d53f8ca55a.dir
+      size: 1816433072
       nfiles: 1
   build:
     cmd: Rscript stages/build.R
     deps:
     - path: download/
       hash: md5
-      md5: 3be97a6b93b71c58a0f0a4195162ee9b.dir
-      size: 1805514254
+      md5: bad1c22433a725845421f7d53f8ca55a.dir
+      size: 1816433072
       nfiles: 1
     - path: stages/build.R
       hash: md5
@@ -31,6 +31,6 @@ stages:
     outs:
     - path: brick/
       hash: md5
-      md5: 162aa0bcf28a151c2d6aef3bea897f47.dir
-      size: 3150743193
+      md5: 38e06ace1cbfe85ee1c0f46275a87c09.dir
+      size: 3165796785
       nfiles: 47
