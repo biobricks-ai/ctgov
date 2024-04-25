@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, PageElement
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -94,10 +94,26 @@ def get_each_table(input: WebElement, name):
     return soup
     
 
+def get_el_text(el: PageElement):
+    return el.get_text()
+
+
+def make_col_dicts(soup: BeautifulSoup):
+    col_names = soup.select("tr > td:nth-of-type(5)")
+    col_types = soup.select("tr > td:nth-of-type(6)")
+    return dict(zip(map(get_el_text, col_names), map(get_el_text, col_types)))
+
+
 def run_script():
     browser = setup_webdriver(URL)
     table, flt = find_data_table(browser)
     input = get_input(flt)
-    soup = get_each_table(input, TABLE_NAMES[0])
-    # need to get the actual data and not just the innerHTML
-    return soup
+    output = {}
+    for table in TABLE_NAMES:
+        soup = get_each_table(input, table)
+        data_dicts = make_col_dicts(soup)
+        output[table] = data_dicts
+    return output
+
+if __name__ == '__main__':
+    run_script()
