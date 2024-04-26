@@ -1,12 +1,20 @@
 from bs4 import BeautifulSoup, PageElement
+import json
+import logging
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
 from typing import Tuple
 
+logger = logging.getLogger(__name__)
+logging.basicConfig(format="%(asctime)s %(message)s")
+logger.setLevel("DEBUG")
 
 URL = "https://aact.ctti-clinicaltrials.org/data_dictionary"
 TABLE_NAMES = [
@@ -56,64 +64,71 @@ TABLE_NAMES = [
     "outcomes",
     "result_agreements",
     "intervention_other_names",
-    "pending_results"
+    "pending_results",
 ]
 
 
-def setup_webdriver(url):
-    browser = webdriver.Firefox()
-    browser.get(url)
-    return browser
+class DataDicts:
+    _webdriver: WebDriver
+
+    def __init__(self, url):
+        session = webdriver.Chrome()
+        session.get(url)
+        session.implicitly_wait(5)
+        self._webdriver = session
+
+    def find_data_table(self) -> Tuple[WebElement]:
+        table = self._webdriver.find_element(By.CSS_SELECTOR, ".jsgrid-grid-body > .jsgrid-table")
+        flt = self._webdriver.find_element(By.CLASS_NAME, "jsgrid-filter-row")
+        return (table, flt)
+
+    def get_input(self, filter_row: WebElement):
+        search_bar = filter_row.find_element(By.CSS_SELECTOR, ":nth-child(4)")
+        input = search_bar.find_element(By.CSS_SELECTOR, ":nth-child(1)")
+        return input
+
+    def run_search(self, input: WebElement, search_term):
+        input.send_keys(search_term)
+        input.send_keys(Keys.RETURN)
+        time.sleep(3)
+
+    def get_each_table(self, table_el: WebElement, input: WebElement, name: str):
+        input.clear()
+        self.run_search(input, name)
+        # need to grab reference to jsgrid-table element
+        outer_html = table_el.get_attribute("outerHTML")
+        soup = BeautifulSoup(outer_html)
+        return soup
+
+    def get_el_text(self, el: PageElement):
+        return el.get_text()
+
+    def make_col_dicts(self, soup: BeautifulSoup):
+        col_names = soup.select("tr > td:nth-of-type(5)")
+        col_types = soup.select("tr > td:nth-of-type(6)")
+        return dict(
+            zip(map(self.get_el_text, col_names), map(self.get_el_text, col_types))
+        )
+
+    def __call__(self):
+        table, flt = self.find_data_table()
+        input = self.get_input(flt)
+        output = {}
+        for table_name in TABLE_NAMES:
+            soup = self.get_each_table(table, input, table_name)
+            logger.info(soup)
+            data_dicts = self.make_col_dicts(soup)
+            assert data_dicts != {'': ''}
+            output[table_name] = data_dicts
+            if table_name != "countries":
+                assert list(data_dicts.keys()) != ["id", "name", "nct_id", "removed"]
+            time.sleep(2)
+        return output
 
 
-def find_data_table(webdriver: WebDriver) -> Tuple[WebElement]:
-    table = webdriver.find_element(By.CLASS_NAME, "jsgrid-table")
-    flt = table.find_element(By.CLASS_NAME, "jsgrid-filter-row")
-    return (table, flt)
-
-
-def get_input(filter_row: WebElement):
-    search_bar = filter_row.find_element(By.CSS_SELECTOR, ":nth-child(4)")
-    input = search_bar.find_element(By.CSS_SELECTOR, ":nth-child(1)")
-    return input
-
-
-def run_search(input: WebElement, search_term):
-    _ = input.location_once_scrolled_into_view  # scrolls the table into view
-    input.send_keys(search_term)
-    input.send_keys(Keys.RETURN)
-
-
-def get_each_table(input: WebElement, name):
-    input.clear()
-    run_search(input, name)
-    # need to grab reference to jsgrid-table element
-    table_ref = globals()['browser']
-    outer_html = table_ref.find_element(By.CLASS_NAME, "jsgrid-grid-body").get_attribute("outerHTML")
-    soup = BeautifulSoup(outer_html)
-    return soup
+if __name__ == "__main__":
+    output = DataDicts(URL)
+    data = output()
     
-
-def get_el_text(el: PageElement):
-    return el.get_text()
-
-
-def make_col_dicts(soup: BeautifulSoup):
-    col_names = soup.select("tr > td:nth-of-type(5)")
-    col_types = soup.select("tr > td:nth-of-type(6)")
-    return dict(zip(map(get_el_text, col_names), map(get_el_text, col_types)))
-
-
-def run_script():
-    browser = setup_webdriver(URL)
-    table, flt = find_data_table(browser)
-    input = get_input(flt)
-    output = {}
-    for table in TABLE_NAMES:
-        soup = get_each_table(input, table)
-        data_dicts = make_col_dicts(soup)
-        output[table] = data_dicts
-    return output
-
-if __name__ == '__main__':
-    run_script()
+    with open("test.json", "w") as f:
+        f.write(json.dumps(data, indent=4))
