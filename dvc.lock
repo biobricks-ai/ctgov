@@ -1,36 +1,54 @@
 schema: '2.0'
 stages:
   download:
-    cmd: Rscript stages/download.R
+    cmd: python3 stages/00_download.py
     deps:
     - path: https://aact.ctti-clinicaltrials.org/pipe_files
       hash: md5
-      checksum: '270187926789710790283625292984097059272'
-    - path: stages/download.R
+      checksum: '286645490874361551640663643212643142456'
+    - path: stages/00_download.py
       hash: md5
-      md5: 25796c42a85949526905b1c02c917ab7
-      size: 586
+      md5: 8d117a0f83077989efddea036576c11a
+      size: 1085
     outs:
     - path: download/
       hash: md5
-      md5: 3be97a6b93b71c58a0f0a4195162ee9b.dir
-      size: 1805514254
+      md5: 1aa7eedcafa09cf85dea3f26171d3099.dir
+      size: 1814330916
       nfiles: 1
   build:
-    cmd: Rscript stages/build.R
+    cmd: python3 stages/03_build.py
     deps:
-    - path: download/
+    - path: stages/03_build.py
       hash: md5
-      md5: 3be97a6b93b71c58a0f0a4195162ee9b.dir
-      size: 1805514254
-      nfiles: 1
-    - path: stages/build.R
+      md5: ca6f58e4fe1b01bb5a62a62c5a60e500
+      size: 1420
+    - path: unzip/
       hash: md5
-      md5: 838d95032e611a7168262b12616d9d0f
-      size: 517
+      md5: c60563edc132bc7ca753bee8864f8285.dir
+      size: 12008296453
+      nfiles: 47
     outs:
     - path: brick/
       hash: md5
-      md5: 162aa0bcf28a151c2d6aef3bea897f47.dir
-      size: 3150743193
+      md5: 81e5a88e9d89c4d4525551ce7f596d72.dir
+      size: 2732820598
+      nfiles: 47
+  unzip:
+    cmd: python3 stages/02_unzip.py
+    deps:
+    - path: download/
+      hash: md5
+      md5: 1aa7eedcafa09cf85dea3f26171d3099.dir
+      size: 1814330916
+      nfiles: 1
+    - path: stages/02_unzip.py
+      hash: md5
+      md5: 3510bb5e24a50ec96768e9f375b69e31
+      size: 552
+    outs:
+    - path: unzip/
+      hash: md5
+      md5: c60563edc132bc7ca753bee8864f8285.dir
+      size: 12008296453
       nfiles: 47
