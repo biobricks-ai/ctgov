@@ -1,448 +1,277 @@
 {
-    "countries": {
-        "id": "integer",
-        "nct_id": "string",
-        "removed": "boolean",
-        "name": "string"
-    },
-    "reported_event_totals": {},
-    "facility_contacts": {
-        "email": "string",
-        "nct_id": "string",
-        "facility_id": "integer",
-        "id": "integer",
-        "name": "string",
-        "contact_type": "string",
-        "phone": "string"
-    },
-    "overall_officials": {
-        "role": "string",
-        "id": "integer",
-        "nct_id": "string",
-        "name": "string",
-        "affiliation": "string"
-    },
-    "design_groups": {
-        "description": "text",
-        "nct_id": "string",
-        "id": "integer",
-        "title": "string",
-        "group_type": "string"
-    },
-    "ipd_information_types": {
-        "nct_id": "string",
-        "id": "integer",
-        "name": "string"
-    },
-    "detailed_descriptions": {
-        "id": "integer",
-        "nct_id": "string",
-        "description": "text"
-    },
     "studies": {
-        "disposition_first_submitted_date": "date",
-        "study_first_submitted_date": "date",
-        "start_month_year": "string",
-        "nlm_download_date_description": "string",
-        "last_update_submitted_date": "date",
-        "results_first_submitted_date": "date",
-        "start_date": "date",
-        "verification_month_year": "string",
-        "verification_date": "date",
-        "completion_month_year": "string",
-        "completion_date": "date",
-        "nct_id": "string",
-        "us_coderc": "string",
-        "primary_completion_month_year": "string",
-        "primary_completion_date": "date",
-        "number_of_groups": "integer",
-        "start_date_type": "string",
-        "study_first_submitted_qc_date": "date",
-        "study_first_posted_date": "date",
-        "disposition_first_submitted_qc_date": "date",
-        "disposition_first_posted_date": "date",
-        "ipd_access_criteria": "string",
-        "results_first_submitted_qc_date": "date",
-        "results_first_posted_date": "date",
-        "last_update_submitted_qc_date": "date",
-        "last_update_posted_date": "date",
-        "target_duration": "string",
-        "baseline_population": "text",
-        "acronym": "string",
-        "brief_title": "text",
-        "completion_date_type": "string",
-        "primary_completion_date_type": "string",
-        "enrollment": "integer",
-        "official_title": "text",
-        "source": "string",
-        "created_at": "timestamps",
-        "updated_at": "timestamps",
-        "limitations_and_caveats": "string",
-        "why_stopped": "string",
-        "biospec_description": "text"
+        "biospec_retention": "string",
+        "table": "studies",
+        "enrollment_type": "string",
+        "is_fda_regulated_drug": "boolean",
+        "is_us_export": "boolean",
+        "last_known_status": "string"
     },
-    "facility_investigators": {
-        "facility_id": "integer",
-        "id": "integer",
+    "analyzed_studies": {
+        "oversight": "string",
+        "table": "analyzed_studies",
         "nct_id": "string",
-        "name": "string",
-        "role": "string"
-    },
-    "documents": {
-        "nct_id": "string",
-        "document_id": "string",
-        "id": "integer",
-        "document_type": "string",
-        "has_protocol": "boolean",
-        "comment": "string",
         "url": "string",
-        "document_date": "date",
-        "has_sap": "boolean",
-        "has_icf": "boolean"
-    },
-    "calculated_values": {
-        "nct_id": "string",
-        "number_of_nsae_subjects": "integer",
-        "number_of_sae_subjects": "integer",
-        "nlm_download_date": "date",
-        "id": "integer",
-        "actual_duration": "integer",
-        "months_to_report_results": "integer",
-        "number_of_primary_outcomes_to_measure": "integer",
-        "number_of_secondary_outcomes_to_measure": "integer",
-        "number_of_other_outcomes_to_measure": "integer",
-        "number_of_facilities": "integer",
-        "minimum_age_num": "integer",
-        "maximum_age_num": "integer",
-        "minimum_age_unit": "string",
-        "maximum_age_unit": "string",
-        "were_results_reported": "boolean",
-        "has_single_facility": "boolean",
-        "has_us_facility": "boolean",
-        "registered_in_calendar_year": "integer"
-    },
-    "conditions": {
-        "id": "integer",
-        "nct_id": "string",
-        "mesh_term": "string",
-        "name": "string"
-    },
-    "reported_events": {
-        "id": "integer",
-        "nct_id": "string",
-        "mesh_term": "string",
-        "name": "string"
-    },
-    "designs": {
-        "nct_id": "string",
-        "id": "integer",
-        "time_perspective": "string",
-        "intervention_model_description": "text",
-        "masking_description": "text",
-        "masking": "string",
-        "observational_model": "string",
-        "primary_purpose": "string",
-        "caregiver_masked": "boolean",
-        "investigator_masked": "boolean",
-        "outcomes_assessor_masked": "boolean",
-        "subject_masked": "boolean",
+        "brief_title": "string",
+        "start_month": "string",
+        "start_year": "string",
+        "overall_statusc": "string",
+        "p_completion_month": "string",
+        "p_completion_year": "string",
+        "completion_month": "string",
+        "completion_year": "string",
+        "verification_month": "string",
+        "verification_year": "string",
+        "p_comp_mn": "string",
+        "p_comp_yr": "string",
+        "received_year": "string",
+        "mntopcom": "string",
+        "enrollment": "string",
+        "number_of_arms": "string",
         "allocation": "string",
-        "intervention_model": "string"
-    },
-    "browse_interventions": {
-        "nct_id": "string",
+        "masking": "string",
+        "phasec": "string",
+        "primary_purpose": null,
+        "sponsor_name": null,
+        "agency_classc": "string",
+        "collaborator_names": "string",
+        "funding": "string",
+        "responsible_party_type": "string",
+        "responsible_party_organization": "string",
+        "behavioral": "string",
+        "results": "string",
+        "resultsreceived_month": "string",
+        "resultsreceived_year": "string",
+        "firstreceived_results_dt": "string",
+        "t2result": "string",
+        "t2result_imp": "string",
+        "t2resmod": "string",
+        "results12": "string",
+        "delayed": "string",
+        "dr_received_dt": "string",
+        "mn2delay": "string",
+        "delayed12": "string",
         "id": "integer",
-        "mesh_term": "string"
+        "intervg1": "string",
+        "biological": "string",
+        "device": "string",
+        "dietsup": "string",
+        "drug": "string",
+        "genetic": "string",
+        "procedure": "string",
+        "radiation": "string",
+        "otherint": "string"
     },
-    "facilities": {
-        "nct_id": "string",
-        "id": "integer",
-        "name": "string",
-        "city": "string",
-        "state": "string",
-        "zip": "string",
-        "country": "string",
-        "status": "string"
-    },
-    "provided_documents": {
-        "id": "integer",
-        "nct_id": "string",
-        "has_protocol": "boolean",
-        "document_type": "string",
-        "url": "string",
-        "document_date": "date",
-        "has_sap": "boolean",
-        "has_icf": "boolean"
-    },
-    "links": {
-        "id": "integer",
-        "nct_id": "string",
-        "url": "string",
-        "description": "text"
-    },
-    "sponsors": {
-        "nct_id": "string",
-        "id": "integer",
-        "name": "string",
-        "lead_or_collaborator": "string",
-        "agency_class": "string"
-    },
-    "participant_flows": {
-        "nct_id": "string",
-        "id": "integer",
-        "recruitment_details": "string",
-        "pre_assignment_details": "string"
-    },
-    "design_group_interventions": {
-        "nct_id": "string",
-        "design_group_id": "integer",
-        "intervention_id": "integer",
-        "id": "integer"
-    },
-    "keywords": {
-        "id": "integer",
-        "nct_id": "string",
-        "name": "string"
-    },
-    "study_references": {
-        "nct_id": "string",
-        "id": "integer",
-        "pmid": "string",
-        "citation": "text",
-        "reference_type": "string"
-    },
-    "design_outcomes": {
-        "nct_id": "string",
-        "id": "integer",
-        "measure": "text",
-        "time_frame": "text",
-        "description": "text",
-        "population": "string",
-        "outcome_type": "string"
-    },
-    "brief_summaries": {
-        "nct_id": "string",
-        "id": "integer",
-        "description": "text"
-    },
-    "outcome_analyses": {
-        "non_inferiority_description": "text",
-        "ci_lower_limit": "decimal",
-        "estimate_description": "text",
-        "non_inferiority_type": "string",
-        "outcome_id": "integer",
-        "nct_id": "string",
-        "p_value": "float 7:6",
-        "id": "integer",
-        "p_value_modifier": "float 7:6",
-        "param_type": "string",
-        "param_value": "decimal",
-        "dispersion_value": "decimal",
-        "ci_percent": "decimal",
-        "ci_upper_limit": "decimal",
-        "ci_upper_limit_na_comment": "string",
-        "p_value_description": "string",
-        "method": "string",
-        "method_description": "text",
-        "other_analysis_description": "text",
+    "outcomes": {
+        "units_analyze": "string",
+        "table": "outcomes",
         "dispersion_type": "string",
-        "groups_description": "text",
-        "ci_n_sides": "string"
-    },
-    "central_contacts": {
-        "nct_id": "string",
-        "id": "integer",
-        "name": "string",
-        "phone": "string",
-        "email": "string",
-        "contact_type": "string"
-    },
-    "drop_withdrawals": {
-        "result_group_id": "integer",
-        "nct_id": "string",
-        "id": "integer",
-        "reason": "string",
-        "count": "integer",
-        "ctgov_group_code": "string",
-        "period": "string"
-    },
-    "result_groups": {
-        "nct_id": "string",
-        "id": "integer",
-        "ctgov_group_code": "string",
-        "title": "string",
-        "result_type": "string",
-        "description": "text"
-    },
-    "id_information": {
-        "nct_id": "string",
-        "id": "integer",
-        "id_value": "string",
-        "id_type": "string"
-    },
-    "baseline_counts": {
-        "result_group_id": "integer",
-        "nct_id": "string",
-        "id": "integer",
-        "ctgov_group_code": "string",
-        "count": "integer",
-        "scope": "string",
-        "units": "string"
-    },
-    "result_contacts": {
-        "nct_id": "string",
-        "id": "integer",
-        "organization": "string",
-        "name": "string",
-        "phone": "string",
-        "email": "string"
+        "param_type": "string"
     },
     "browse_conditions": {
+        "mesh_term": "string",
+        "table": "browse_conditions"
+    },
+    "pending_results": {
+        "event_date": "date",
+        "table": "pending_results"
+    },
+    "ipd_information_types": {
+        "name": "string",
+        "table": "ipd_information_types"
+    },
+    "design_group_interventions": {
         "id": "integer",
-        "nct_id": "string",
+        "table": "design_group_interventions"
+    },
+    "brief_summaries": {
+        "description": "text",
+        "table": "brief_summaries"
+    },
+    "facility_contacts": {
+        "phone": "string",
+        "table": "facility_contacts"
+    },
+    "interventions": {
+        "description": "text",
+        "table": "interventions"
+    },
+    "browse_interventions": {
+        "id": "integer",
+        "table": "browse_interventions",
         "mesh_term": "string"
     },
-    "baseline_measurements": {
-        "result_group_id": "integer",
-        "nct_id": "string",
-        "id": "integer",
-        "param_value": "string",
-        "ctgov_group_code": "string",
-        "classification": "string",
-        "units": "string",
-        "title": "text",
-        "description": "string",
-        "param_value_num": "decimal",
-        "dispersion_value": "string",
-        "dispersion_value_num": "decimal",
-        "dispersion_lower_limit": "decimal",
-        "dispersion_upper_limit": "decimal",
-        "dispersion_type": "string",
-        "explanation_of_na": "string",
-        "param_type": "string",
-        "category": "string"
-    },
-    "search_results": {
-        "nct_id": "string",
+    "overall_officials": {
         "name": "string",
-        "grouping": "string",
-        "study_search_id": "string",
-        "id": "integer"
+        "table": "overall_officials",
+        "affiliation": "string"
     },
-    "outcome_counts": {
-        "nct_id": "string",
-        "outcome_id": "integer",
-        "result_group_id": "integer",
-        "id": "integer",
-        "ctgov_group_code": "string",
-        "count": "integer",
-        "units": "string",
-        "scope": "string"
+    "reported_events": {
+        "assessment": "string",
+        "table": "reported_events"
+    },
+    "outcome_analyses": {
+        "ci_n_sides": "string",
+        "table": "outcome_analyses"
+    },
+    "calculated_values": {
+        "registered_in_calendar_year": "integer",
+        "table": "calculated_values"
+    },
+    "central_contacts": {
+        "contact_type": "string",
+        "table": "central_contacts"
+    },
+    "conditions": {
+        "name": "string",
+        "table": "conditions"
+    },
+    "design_groups": {
+        "group_type": "string",
+        "table": "design_groups"
+    },
+    "countries": {
+        "removed": "boolean",
+        "table": "countries",
+        "name": "string"
+    },
+    "design_outcomes": {
+        "outcome_type": "string",
+        "table": "design_outcomes"
+    },
+    "designs": {
+        "intervention_model": "string",
+        "table": "designs"
+    },
+    "detailed_descriptions": {
+        "description": "text",
+        "table": "detailed_descriptions"
+    },
+    "documents": {
+        "comment": "string",
+        "table": "documents",
+        "url": "string"
+    },
+    "provided_documents": {
+        "has_icf": "boolean",
+        "table": "provided_documents"
     },
     "eligibilities": {
-        "nct_id": "string",
-        "id": "integer",
-        "population": "text",
-        "gender_description": "text",
-        "minimum_age": "string",
-        "maximum_age": "string",
-        "criteria": "text",
-        "sampling_method": "string",
         "gender": "string",
+        "table": "eligibilities",
         "gender_based": "boolean",
         "healthy_volunteers": "string"
     },
-    "interventions": {
-        "nct_id": "string",
-        "design_group_id": "integer",
-        "intervention_id": "integer",
-        "id": "integer",
+    "facilities": {
+        "status": "string",
+        "table": "facilities"
+    },
+    "responsible_parties": {
+        "responsible_party_type": "string",
+        "table": "responsible_parties"
+    },
+    "id_information": {
+        "id_type": "string",
+        "table": "id_information"
+    },
+    "intervention_other_names": {
         "name": "string",
-        "mesh_term": "string",
-        "intervention_type": "string",
+        "table": "intervention_other_names"
+    },
+    "facility_investigators": {
+        "role": "string",
+        "table": "facility_investigators"
+    },
+    "keywords": {
+        "name": "string",
+        "table": "keywords"
+    },
+    "links": {
+        "url": "string",
+        "table": "links",
         "description": "text"
     },
-    "outcome_measurements": {
-        "outcome_id": "integer",
-        "nct_id": "string",
-        "result_group_id": "integer",
-        "id": "integer",
-        "title": "string",
-        "param_value_num": "decimal",
-        "param_value": "string",
-        "dispersion_upper_limit": "decimal",
-        "dispersion_lower_limit": "decimal",
-        "explanation_of_na": "text",
-        "dispersion_value_num": "decimal",
-        "dispersion_type": "string",
-        "dispersion_value": "string",
-        "units": "string",
-        "description": "text",
-        "ctgov_group_code": "string",
-        "classification": "string",
-        "category": "string",
-        "param_type": "string"
+    "sponsors": {
+        "agency_class": "string",
+        "table": "sponsors"
     },
-    "retractions": {},
-    "responsible_parties": {
-        "affiliation": "text",
+    "study_references": {
+        "reference_type": "string",
+        "table": "study_references"
+    },
+    "search_results": {
         "id": "integer",
-        "nct_id": "string",
-        "title": "string",
-        "organization": "string",
+        "table": "search_results"
+    },
+    "result_agreements": {
+        "pi_employee": "string",
+        "table": "result_agreements"
+    },
+    "study_searches": {
+        "id": "integer",
+        "table": "study_searches"
+    },
+    "result_contacts": {
         "name": "string",
-        "responsible_party_type": "string"
+        "table": "result_contacts",
+        "phone": "string",
+        "email": "string"
+    },
+    "result_groups": {
+        "description": "text",
+        "table": "result_groups"
+    },
+    "baseline_measurements": {
+        "category": "string",
+        "table": "baseline_measurements"
+    },
+    "outcome_measurements": {
+        "param_type": "string",
+        "table": "outcome_measurements"
+    },
+    "baseline_counts": {
+        "scope": "string",
+        "table": "baseline_counts",
+        "units": "string"
+    },
+    "outcome_analysis_groups": {
+        "ctgov_group_code": "string",
+        "table": "outcome_analysis_groups"
+    },
+    "outcome_counts": {
+        "scope": "string",
+        "table": "outcome_counts"
     },
     "milestones": {
-        "result_group_id": "integer",
-        "nct_id": "string",
-        "id": "integer",
         "count": "integer",
+        "table": "milestones",
         "description": "text",
         "title": "string",
         "period": "string",
         "ctgov_group_code": "string"
     },
-    "outcome_analysis_groups": {
-        "outcome_analysis_id": "integer",
-        "result_group_id": "integer",
-        "nct_id": "string",
-        "id": "integer",
-        "ctgov_group_code": "string"
+    "participant_flows": {
+        "recruitment_details": "string",
+        "table": "participant_flows",
+        "pre_assignment_details": "string"
     },
-    "outcomes": {
-        "anticipated_posting_date": "date",
-        "nct_id": "string",
-        "id": "integer",
-        "measure": "text",
-        "time_frame": "text",
-        "description": "text",
-        "population": "text",
-        "anticipated_posting_month_year": "string",
-        "outcome_type": "string",
-        "title": "text",
-        "units": "string",
-        "units_analyze": "string",
-        "dispersion_type": "string",
-        "param_type": "string"
+    "drop_withdrawals": {
+        "period": "string",
+        "table": "drop_withdrawals"
     },
-    "result_agreements": {
-        "nct_id": "string",
+    "tagged_terms": {
         "id": "integer",
-        "agreement": "text",
-        "pi_employee": "string"
+        "table": "tagged_terms"
     },
-    "intervention_other_names": {
-        "nct_id": "string",
-        "intervention_id": "integer",
+    "cdek_organizations": {
         "id": "integer",
-        "name": "string"
+        "table": "cdek_organizations"
     },
-    "pending_results": {
-        "event": "string",
-        "nct_id": "string",
-        "event_date_description": "string",
-        "id": "integer",
-        "event_date": "date"
+    "cdek_synonyms": {
+        "name": "string",
+        "table": "cdek_synonyms",
+        "preferred_name": "string",
+        "downcase_name": "string",
+        "downcase_preferred_name": "string"
     }
 }
