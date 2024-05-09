@@ -6,10 +6,17 @@ stages:
     - "https://aact.ctti-clinicaltrials.org/pipe_files"
     outs:
     - download/
+  download-metadata:
+    cmd: stages/download-metadata.sh
+    deps:
+    - stages/download-metadata.sh
+    outs:
+    - metadata/
   build:
     cmd: Rscript stages/build.R
     deps:
     - stages/build.R
     - download/
+    - metadata/
     outs:
     - brick/
