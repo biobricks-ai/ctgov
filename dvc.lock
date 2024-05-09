@@ -24,13 +24,31 @@ stages:
       md5: 3be97a6b93b71c58a0f0a4195162ee9b.dir
       size: 1805514254
       nfiles: 1
+    - path: metadata/
+      hash: md5
+      md5: b87efc3ea229729b5b5f2e63873ca319.dir
+      size: 2388785
+      nfiles: 1
     - path: stages/build.R
       hash: md5
-      md5: 838d95032e611a7168262b12616d9d0f
-      size: 517
+      md5: 0a1e862efbe999ac5d924f622012268b
+      size: 1219
     outs:
     - path: brick/
       hash: md5
-      md5: 162aa0bcf28a151c2d6aef3bea897f47.dir
-      size: 3150743193
+      md5: 57c44f6c808bc560ff54765a407cd7ff.dir
+      size: 2739091151
       nfiles: 47
+  download-metadata:
+    cmd: stages/download-metadata.sh
+    deps:
+    - path: stages/download-metadata.sh
+      hash: md5
+      md5: ffdbeb53d684e95d8163086485e77528
+      size: 411
+    outs:
+    - path: metadata/
+      hash: md5
+      md5: b87efc3ea229729b5b5f2e63873ca319.dir
+      size: 2388785
+      nfiles: 1
